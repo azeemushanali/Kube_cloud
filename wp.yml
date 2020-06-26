@@ -1,0 +1,22 @@
+#this is without use of secrets
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: wprs1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: dev
+      app: wp
+  template:
+    metadata:
+      name: wppod1
+      labels:
+        app: wp
+        env: dev
+    spec:
+      containers:
+      - name: wpcon1
+        image: wordpress:4.8-apache
+        
